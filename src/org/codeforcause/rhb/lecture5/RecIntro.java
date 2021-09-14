@@ -3,7 +3,7 @@ package org.codeforcause.rhb.lecture5;
 public class RecIntro {
 
     public static void main(String[] args) {
-        RecIntro.pd(5);
+        RecIntro.pd(110000);
     }
 
     public static void pd(int n){
