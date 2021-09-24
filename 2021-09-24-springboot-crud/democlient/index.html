@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.4/axios.min.js" integrity="sha512-lTLt+W7MrmDfKam+r3D2LURu0F47a3QaW5nF0c6Hl0JDZ57ruei+ovbg7BrZ+0bjVJ5YgzsAWE+RreERbpPE1g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  </head>
+  <body>
+      <form id="postform">
+        <input id="name" name="name"/>
+        <input id="age" name="age"/>
+        <button type="submit">Submit</button>
+      </form>
+
+      <script>
+          let form = document.getElementById("postform");
+
+          form.onsubmit = function(event){
+            event.preventDefault();
+
+            let name = document.getElementById("name").value;
+            let age = document.getElementById("age").value;
+
+            let body = {
+                name: name,
+                age: age
+            }
+
+            axios.post("http://localhost:8080/", body).then(function(response){
+                console.log(response);
+            }).catch(function(error){
+                console.log(error);
+            })
+          }
+
+
+      </script>
+    
+
+
+    <form id="deleteform">
+        <input id="id" name="id"/>
+        <button type="submit">Submit</button>
+    </form>
+
+      <script>
+          let deleteform = document.getElementById("deleteform");
+
+          deleteform.onsubmit = function(event){
+            event.preventDefault();
+
+            let id = document.getElementById("id").value;
+
+            axios.delete(`http://localhost:8080/${id}`).then(function(response){
+                console.log(response);
+            }).catch(function(error){
+                console.log(error);
+            })
+          }
+
+
+      </script>
+          
+
+  </body>
+</html>
