@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1 id="myitem">Major Thing</h1>
+    <h1>Something 1</h1>
+    <h1>Something 2</h1>
+    <h1>Something 3</h1>
+    <h1>Something 4</h1>
+    <h1>Something 5</h1>
+
+    <script>
+      function mytask() {
+        let item = document.getElementById("myitem");
+        item.innerHTML = "This is updated value";
+      }
+
+      function remover() {
+        let item = document.getElementById("myitem");
+        document.body.removeChild(item);
+      }
+
+      function adder() {
+        let item = document.createElement("h1");
+        item.innerHTML = "Whatever";
+        document.body.appendChild(item);
+      }
+
+      setTimeout(mytask, 2000);
+      setTimeout(remover, 4000);
+      setTimeout(adder, 6000);
+
+      //   console.log(item.innerHTML);
+    </script>
+  </body>
+</html>
