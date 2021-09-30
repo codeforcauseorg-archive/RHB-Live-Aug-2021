@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0px;
+        }
+        #myimage {
+            height: 50px;
+            width: 50px;
+            position: absolute;
+        }
+        #root {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            background-color: aquamarine;
+        }
+
+        #score {
+            margin: 0px;
+            color: brown;
+            position: absolute;
+            top: 50px;
+            left: 50px;
+        }
+
+        #startbutton{
+            position: absolute;
+            width: 10%;
+            height: 8%;
+            left: 45%;
+            top: 46%
+        }
+    </style>
+</head>
+<body>
+
+    <div id="root">
+
+        <button id="startbutton">Start Game</button>
+
+    </div>
+
+    <script>
+        let root = document.getElementById("root");
+        let startbutton = document.getElementById("startbutton");
+
+        startbutton.onclick = playgame;
+
+        let scoreVal = 0;
+
+
+
+        function addcoin(){
+            let score = document.getElementById("score");
+            let im = document.createElement("img");
+            let avail = true;
+            im.setAttribute("src", "https://upload.wikimedia.org/wikipedia/commons/d/d6/Gold_coin_icon.png");
+            im.setAttribute("id", "myimage");
+            let leftV = parseInt(Math.random() * (window.innerWidth-50));
+            let topV = parseInt(Math.random() * (window.innerHeight-50));
+            im.style.setProperty("top", topV+"px");
+            im.style.setProperty("left", leftV+"px");
+            root.appendChild(im);
+
+            im.onmouseover = function(event){
+                root.removeChild(im);
+                scoreVal += 10;
+                score.innerHTML = "Score : " + scoreVal;
+                avail = false;
+                let audio = new Audio("./coin.mp3");
+                audio.play();
+            }
+
+            let removePanda = function(){
+                if(avail){
+                    root.removeChild(im);
+                }
+            };
+
+
+            setTimeout(removePanda, 2000);
+
+
+        }
+
+
+        function addbomb(){
+            let score = document.getElementById("score");
+            let im = document.createElement("img");
+            let avail = true;
+            im.setAttribute("src", "https://pngimg.com/uploads/bomb/bomb_PNG5.png");
+            im.setAttribute("id", "myimage");
+            let leftV = parseInt(Math.random() * (window.innerWidth-50));
+            let topV = parseInt(Math.random() * (window.innerHeight-50));
+            im.style.setProperty("top", topV+"px");
+            im.style.setProperty("left", leftV+"px");
+            root.appendChild(im);
+
+            im.onmouseover = function(event){
+                root.removeChild(im);
+                scoreVal = 0;
+                score.innerHTML = "Score : " + scoreVal;
+                avail = false;
+                let audio = new Audio("./bomb.wav");
+                audio.play();
+            }
+
+            let removePanda = function(){
+                if(avail){
+                    root.removeChild(im);
+                }
+            };
+
+
+            setTimeout(removePanda, 2000);
+
+
+        }
+
+        function playgame(){
+            let root = document.getElementById("root");
+            root.innerHTML = "";
+
+            let score = document.createElement("h1");
+            score.setAttribute("id", "score");
+            score.innerHTML = "Score : 0";
+
+            root.appendChild(score);
+
+            setInterval(addcoin, 1000);
+            setInterval(addbomb, 1000);
+        }
+
+        
+
+
+    </script>
+</body>
+</html>
