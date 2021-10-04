@@ -2,9 +2,21 @@ import "./App.css";
 import Routes from "./Routes";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import firebase from "./utils/firebase";
+
+let UserContext = React.createContext();
 
 function App() {
   let history = useHistory();
+  let [user, setUser] = useState();
+
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged((user) => {
+      console.log(user);
+      setUser(user);
+    });
+  }, []);
 
   return (
     <div className="App">
@@ -26,9 +38,11 @@ function App() {
         <Link to="/about">About</Link>
       </h1>
 
-      <Routes />
+      <UserContext.Provider value={{ user, setUser }}>
+        <Routes />
+      </UserContext.Provider>
     </div>
   );
 }
 
-export default App;
+export { App, UserContext };

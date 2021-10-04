@@ -1,10 +1,15 @@
 import { Switch, Route } from "react-router-dom";
+import About from "./About";
+import Login from "./Login";
 
 export default function Routes() {
   return (
     <Switch>
+      <Route path="/login">
+        <Login />
+      </Route>
       <Route path="/about">
-        <h1>About page</h1>
+        <About />
       </Route>
       <Route path="/users">
         <h1>Users page</h1>
