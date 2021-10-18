@@ -1,20 +1,17 @@
 import { useKeycloak } from "@react-keycloak/web";
 
-export default function Home() {
+export default function Login() {
   const { keycloak } = useKeycloak();
 
   return (
     <div>
-      <h1>You are logged in</h1>
-      <h3> Name: {keycloak.idTokenParsed.name}</h3>
-      <h3> Email: {keycloak.idTokenParsed.email}</h3>
       <button
         onClick={function () {
           console.log(keycloak);
-          keycloak.logout();
+          keycloak.login();
         }}
       >
-        Logout
+        Login
       </button>
     </div>
   );
