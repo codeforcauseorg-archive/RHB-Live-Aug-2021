@@ -1,0 +1,25 @@
+.gameboard{
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    background-color: bisque;
+}
+
+.coin{
+    width: 50px;
+    position: absolute;
+}
+
+.bomb{
+    width: 50px;
+    position: absolute;
+}
+
+.score{
+    margin: 0px;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 40px;
+    color: red;
+}
