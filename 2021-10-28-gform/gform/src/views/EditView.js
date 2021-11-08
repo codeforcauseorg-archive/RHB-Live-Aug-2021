@@ -65,6 +65,11 @@ export default function EditView() {
                 setForm(copy);
               }}
             />
+
+            <Button variant="outlined" onClick={function(){
+                form.questions.splice(index, 1);
+                setForm({...form});
+            }}>Remove Question</Button>
           </div>
         );
       })}
