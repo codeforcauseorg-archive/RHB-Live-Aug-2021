@@ -24,6 +24,7 @@ public class HumanController {
 
     @GetMapping
     public List<Human> findAll(){
+
         return this.humanService.findAll();
     }
 

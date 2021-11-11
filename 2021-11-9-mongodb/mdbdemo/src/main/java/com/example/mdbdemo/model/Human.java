@@ -14,13 +14,15 @@ public class Human {
     public String firstName;
     public String lastName;
     public List<String> tags;
+    public List<Subject> subjects;
 
     public Human() {}
 
-    public Human(String firstName, String lastName, List<String> tags) {
+    public Human(String firstName, String lastName, List<String> tags, List<Subject> subjects) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.tags = tags;
+        this.subjects = subjects;
     }
 
     @Override
