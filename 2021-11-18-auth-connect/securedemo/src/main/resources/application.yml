@@ -1,0 +1,10 @@
+keycloak:
+  auth-server-url: https://lemur-6.cloud-iam.com/auth
+  realm: rhb
+  resource: myserver
+  ssl-required: external
+  use-resource-role-mappings: true
+
+
+server:
+  port: 5030
